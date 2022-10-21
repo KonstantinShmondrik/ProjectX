@@ -8,11 +8,24 @@
 import UIKit
 
 class SignUPViewController: UIViewController {
+    
+    private var authView: SignUpView {
+        return self.view as! SignUpView
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func loadView() {
+        super.loadView()
+        let view = SignUpView()
+        view.delegate = self
+        
+        self.view = view
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
-        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,4 +36,17 @@ class SignUPViewController: UIViewController {
     }
 
    
+}
+
+extension SignUPViewController: SignUpViewProtocol {
+    func tapaddAvatarButton() {
+        print("press avatar")
+    }
+    
+    func tapSignUPButton() {
+        print("press SignUP")
+    }
+    
+    
+    
 }
