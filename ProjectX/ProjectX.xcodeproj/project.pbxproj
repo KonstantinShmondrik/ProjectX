@@ -13,6 +13,8 @@
 		005C007F2902A65C009A49A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 005C007E2902A65C009A49A9 /* Assets.xcassets */; };
 		005C00822902A65C009A49A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005C00802902A65C009A49A9 /* LaunchScreen.storyboard */; };
 		005C008A2902A90F009A49A9 /* StartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C00892902A90F009A49A9 /* StartManager.swift */; };
+		005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009C2902C2E9009A49A9 /* AuthView.swift */; };
+		005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009E2902C88B009A49A9 /* SignUPViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		005C00812902A65C009A49A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		005C00832902A65C009A49A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		005C00892902A90F009A49A9 /* StartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartManager.swift; sourceTree = "<group>"; };
+		005C009C2902C2E9009A49A9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		005C009E2902C88B009A49A9 /* SignUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,7 @@
 		005C00982902AD2E009A49A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				005C009C2902C2E9009A49A9 /* AuthView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 		005C009B2902AD5A009A49A9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				005C009E2902C88B009A49A9 /* SignUPViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -274,8 +280,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				005C007A2902A65A009A49A9 /* AuthViewController.swift in Sources */,
+				005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */,
 				005C00762902A65A009A49A9 /* AppDelegate.swift in Sources */,
 				005C008A2902A90F009A49A9 /* StartManager.swift in Sources */,
+				005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */,
 				005C00782902A65A009A49A9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
