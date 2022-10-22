@@ -20,8 +20,6 @@ class SignUPViewController: UIViewController {
         super.loadView()
         let view = SignUpView()
         view.delegate = self
-        
-        
         self.view = view
     }
     
@@ -105,15 +103,15 @@ class SignUPViewController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
 }
 
 extension SignUPViewController: SignUpViewProtocol {
+    
     func tapaddAvatarButton() {
-        print("press avatar")
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     func tapSignUPButton() {
@@ -134,15 +132,24 @@ extension SignUPViewController: SignUpViewProtocol {
         }
     }
     
-    
-    
 }
-
+// MARK: - UITextFieldDelegate
 extension SignUPViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let fullString = (textField.text ?? "") + string
         textField.text = PhoneNomberFormater().format(phoneNumber: fullString, shouldRemoveLastDigit: range.length == 1)
         return false
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension SignUPViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        signUpView.avatarImage.image = image
     }
 }
