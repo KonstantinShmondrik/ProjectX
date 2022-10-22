@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUPViewController: UIViewController {
     
@@ -83,9 +84,29 @@ class SignUPViewController: UIViewController {
             return
         }
         
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            guard let result = result else {
+                completion(.failure(error!))
+                return
+            }
+            let db = Firestore.firestore()
+            db.collection("users").addDocument(data: [
+                "firstname": self.signUpView.nameTexField.text ?? "",
+                "lastname": self.signUpView.lastnameTexField.text ?? "",
+                "phoneNomber": self.signUpView.phoneNomberTexField.text ?? "",
+                "e-mail": self.signUpView.emailTexField.text ?? "",
+                "dateOfBirth": self.signUpView.dateOfBirthTexField.text ?? "",
+                "uid": result.user.uid
+            ]) { (error) in
+                if let error = error {
+                    completion(.failure(error))
+                }
+                completion(.success)
+            }
+        }
     }
     
-
+    
     
     
 }
@@ -111,8 +132,6 @@ extension SignUPViewController: SignUpViewProtocol {
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
         }
-        
-        print("press SignUP")
     }
     
     

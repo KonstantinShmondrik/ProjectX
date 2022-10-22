@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import Firebase
 
 class AuthViewController: UIViewController {
-   
+    
     private var authView: AuthView {
         return self.view as! AuthView
     }
-   
+    
     // MARK: - Lifecycle
-
+    
     override func loadView() {
         super.loadView()
         let view = AuthView()
@@ -35,25 +36,7 @@ class AuthViewController: UIViewController {
         navigationController?.setToolbarHidden(true, animated: false)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    // MARK: - private func
-    
-    private func showError(_ errorMessage: String) {
-      
-        let alert = UIAlertController(title: "Ошибка авторизации",
-                                      message: errorMessage,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ок",
-                                      style: .default,
-                                      handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func proceedToWelcomeScreen() {
-       
-//        navigationController?.pushViewController(TabBarViewController(), animated: true)
-    }
-    
+
 }
 
 // MARK: - AuthViewProtocol
@@ -61,11 +44,24 @@ extension AuthViewController: AuthViewProtocol {
     
     func tapLoginButton(userName: String, password: String) {
         
+        guard let login = self.authView.loginTexField.text, let password = self.authView.passwordTexField.text else {return}
+        
+        Auth.auth().signIn(withEmail: login, password: password) { (result, error) in
+            if error != nil {
+                self.showAlert(with: "Ohh...", and: error?.localizedDescription ?? error.debugDescription, completion: { print(error?.localizedDescription ?? error.debugDescription)
+                })
+            } else {
+                self.showAlert(with: "Welcome", and: "You are logged in", completion: {
+                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
+                })
+            }
+        }
+        
     }
     
     func tapRegistButton() {
         navigationController?.pushViewController(SignUPViewController(), animated: true)
     }
-
+    
 }
 
