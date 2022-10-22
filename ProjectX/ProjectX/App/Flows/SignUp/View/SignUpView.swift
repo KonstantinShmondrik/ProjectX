@@ -18,6 +18,30 @@ protocol SignUpViewProtocol: AnyObject {
 class SignUpView: UIView {
     
     // MARK: - Subviews
+    private (set) lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.preferredDatePickerStyle = .inline
+        datePicker.datePickerMode = .date
+        datePicker.frame = CGRect(x: 0, y: self.frame.height - 400, width: self.frame.width, height: 400)
+        datePicker.backgroundColor = .white
+        
+        let yearAgo = Calendar.current.date(byAdding: .year, value: -18, to: Date())
+        datePicker.maximumDate = yearAgo
+        
+        let localeID = Locale.preferredLanguages.first
+        datePicker.locale = Locale(identifier: localeID!)
+        datePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
+        
+//        let toolBar = UIToolbar()
+//        toolBar.sizeToFit()
+//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+//        let flexSpase = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//
+//        toolBar.setItems([flexSpase, doneButton], animated: true)
+        
+        return datePicker
+    }()
+
     private(set) lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 2000)
@@ -37,7 +61,7 @@ class SignUpView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
-    }()    
+    }()
     
     private (set) lazy var avatarImage: UIImageView = {
         let image = UIImageView(frame: frame)
@@ -84,6 +108,19 @@ class SignUpView: UIView {
         textField.borderStyle = .bezel
         textField.attributedPlaceholder = NSAttributedString(string: "Date of birth", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.textColor = .black
+        textField.inputView = datePicker
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doneAction))
+        self.addGestureRecognizer(tapGesture)
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        let flexSpase = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([flexSpase, doneButton], animated: true)
+        textField.inputAccessoryView = toolBar
+        
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -272,6 +309,13 @@ class SignUpView: UIView {
         scrollView.addGestureRecognizer(hideKeyboardGesture)
     }
     
+    private func getDateFromPicer() {
+        let formater = DateFormatter()
+        formater.dateFormat = "dd.MM.yyyy"
+        dateOfBirthTexField.text = formater.string(from: datePicker.date)
+        
+    }
+    
     // MARK: - Actions
     
     @objc private func registButtonPressed() {
@@ -318,6 +362,14 @@ class SignUpView: UIView {
         signUpButton.isEnabled = true
     }
     
-   
+    @objc func doneAction() {
+        getDateFromPicer()
+        self.endEditing(true)
+    }
+    
+    @objc func dateChange() {
+        getDateFromPicer()
+        
+    }
     
 }
