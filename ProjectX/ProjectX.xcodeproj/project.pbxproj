@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0025C5822903EB1B00E38BB7 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025C5812903EB1B00E38BB7 /* Validators.swift */; };
+		0025C5842903ED4300E38BB7 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025C5832903ED4300E38BB7 /* AuthError.swift */; };
+		0025C5862903EDA000E38BB7 /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025C5852903EDA000E38BB7 /* AuthResult.swift */; };
+		0025C5882904119200E38BB7 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025C5872904119200E38BB7 /* UIViewController + Extension.swift */; };
+		0025C58A29042DBD00E38BB7 /* PhoneNomberFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025C58929042DBD00E38BB7 /* PhoneNomberFormater.swift */; };
 		005C00762902A65A009A49A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C00752902A65A009A49A9 /* AppDelegate.swift */; };
 		005C00782902A65A009A49A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C00772902A65A009A49A9 /* SceneDelegate.swift */; };
 		005C007A2902A65A009A49A9 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C00792902A65A009A49A9 /* AuthViewController.swift */; };
@@ -19,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0025C5812903EB1B00E38BB7 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		0025C5832903ED4300E38BB7 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		0025C5852903EDA000E38BB7 /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
+		0025C5872904119200E38BB7 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		0025C58929042DBD00E38BB7 /* PhoneNomberFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNomberFormater.swift; sourceTree = "<group>"; };
 		005C00722902A65A009A49A9 /* ProjectX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		005C00752902A65A009A49A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		005C00772902A65A009A49A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +53,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0025C5802903EAFC00E38BB7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0025C5812903EB1B00E38BB7 /* Validators.swift */,
+				0025C5832903ED4300E38BB7 /* AuthError.swift */,
+				0025C5852903EDA000E38BB7 /* AuthResult.swift */,
+				0025C58929042DBD00E38BB7 /* PhoneNomberFormater.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		005C00692902A65A009A49A9 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +146,7 @@
 		005C00912902AAAF009A49A9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0025C5802903EAFC00E38BB7 /* Helpers */,
 				005C00932902AAF0009A49A9 /* UIComponents */,
 				005C00922902AADE009A49A9 /* Extensions */,
 			);
@@ -134,6 +156,7 @@
 		005C00922902AADE009A49A9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0025C5872904119200E38BB7 /* UIViewController + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -282,11 +305,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0025C5882904119200E38BB7 /* UIViewController + Extension.swift in Sources */,
 				005C007A2902A65A009A49A9 /* AuthViewController.swift in Sources */,
 				005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */,
 				005C00762902A65A009A49A9 /* AppDelegate.swift in Sources */,
 				005C008A2902A90F009A49A9 /* StartManager.swift in Sources */,
+				0025C58A29042DBD00E38BB7 /* PhoneNomberFormater.swift in Sources */,
+				0025C5822903EB1B00E38BB7 /* Validators.swift in Sources */,
 				005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */,
+				0025C5862903EDA000E38BB7 /* AuthResult.swift in Sources */,
+				0025C5842903ED4300E38BB7 /* AuthError.swift in Sources */,
 				005C00A12902CB3F009A49A9 /* SignUpView.swift in Sources */,
 				005C00782902A65A009A49A9 /* SceneDelegate.swift in Sources */,
 			);

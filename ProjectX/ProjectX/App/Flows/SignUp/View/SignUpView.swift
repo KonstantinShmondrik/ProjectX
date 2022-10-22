@@ -32,16 +32,9 @@ class SignUpView: UIView {
         datePicker.locale = Locale(identifier: localeID!)
         datePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
         
-//        let toolBar = UIToolbar()
-//        toolBar.sizeToFit()
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
-//        let flexSpase = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//
-//        toolBar.setItems([flexSpase, doneButton], animated: true)
-        
         return datePicker
     }()
-
+    
     private(set) lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 2000)
@@ -132,6 +125,7 @@ class SignUpView: UIView {
         textField.borderStyle = .bezel
         textField.attributedPlaceholder = NSAttributedString(string: "Phone nomber", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.textColor = .black
+        textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -315,6 +309,7 @@ class SignUpView: UIView {
         dateOfBirthTexField.text = formater.string(from: datePicker.date)
         
     }
+    
     
     // MARK: - Actions
     
