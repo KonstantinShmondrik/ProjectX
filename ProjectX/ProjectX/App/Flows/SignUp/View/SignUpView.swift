@@ -10,7 +10,7 @@ import UIKit
 
 protocol SignUpViewProtocol: AnyObject {
     func tapSignUPButton()
-    func tapaddAvatarButton()
+    func tapAddAvatarButton()
     
     
 }
@@ -58,6 +58,7 @@ class SignUpView: UIView {
     
     private (set) lazy var avatarImage: UIImageView = {
         let image = UIImageView(frame: frame)
+        image.image = UIImage(named: "noPhoto")
         image.layer.cornerRadius = 50
         image.backgroundColor = .lightGray
         image.clipsToBounds = true
@@ -321,7 +322,7 @@ class SignUpView: UIView {
     
     @objc private func addAvatarButtonPressed() {
         
-        delegate?.tapaddAvatarButton()
+        delegate?.tapAddAvatarButton()
         
     }
     

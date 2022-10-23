@@ -7,12 +7,15 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class SignUPViewController: UIViewController {
     
     private var signUpView: SignUpView {
         return self.view as! SignUpView
     }
+    
+    var urlString = ""
     
     // MARK: - Lifecycle
     
@@ -34,6 +37,29 @@ class SignUPViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationItem.hidesBackButton = false
+    }
+    
+    func upload(currentUserId: String, photo: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
+        let ref = Storage.storage().reference().child("phptos").child(currentUserId).child("avatars").child(currentUserId)
+        
+        guard let imageData = signUpView.avatarImage.image?.jpegData(compressionQuality: 0.4) else { return }
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        ref.putData(imageData, metadata: metadata) { (metadata, error) in
+            guard let _ = metadata else {
+                completion(.failure(error!))
+                return
+            }
+            ref.downloadURL { (url, error) in
+                guard let url = url else {
+                    completion(.failure(error!))
+                    return
+                }
+                completion(.success(url))
+            }
+        }
     }
     
     func register(firstName: String?, lastname: String?, email: String?, phoneNomber: String?, password: String?, completion: @escaping (AuthResult) -> Void) {
@@ -87,19 +113,29 @@ class SignUPViewController: UIViewController {
                 completion(.failure(error!))
                 return
             }
-            let db = Firestore.firestore()
-            db.collection("users").addDocument(data: [
-                "firstname": self.signUpView.nameTexField.text ?? "",
-                "lastname": self.signUpView.lastnameTexField.text ?? "",
-                "phoneNomber": self.signUpView.phoneNomberTexField.text ?? "",
-                "e-mail": self.signUpView.emailTexField.text ?? "",
-                "dateOfBirth": self.signUpView.dateOfBirthTexField.text ?? "",
-                "uid": result.user.uid
-            ]) { (error) in
-                if let error = error {
+            self.upload(currentUserId: result.user.uid,
+                        photo: self.signUpView.avatarImage.image!) { (uploadResult) in
+                switch uploadResult {
+                case .success(let url):
+                    self.urlString = url.absoluteString
+                    let db = Firestore.firestore()
+                    db.collection("users").addDocument(data: [
+                        "firstname": self.signUpView.nameTexField.text ?? "",
+                        "lastname": self.signUpView.lastnameTexField.text ?? "",
+                        "phoneNomber": self.signUpView.phoneNomberTexField.text ?? "",
+                        "e-mail": self.signUpView.emailTexField.text ?? "",
+                        "dateOfBirth": self.signUpView.dateOfBirthTexField.text ?? "",
+                        "avatarURL": url.absoluteString,
+                        "uid": result.user.uid
+                    ]) { (error) in
+                        if let error = error {
+                            completion(.failure(error))
+                        }
+                        completion(.success)
+                    }
+                case .failure(let error):
                     completion(.failure(error))
                 }
-                completion(.success)
             }
         }
     }
@@ -107,7 +143,7 @@ class SignUPViewController: UIViewController {
 
 extension SignUPViewController: SignUpViewProtocol {
     
-    func tapaddAvatarButton() {
+    func tapAddAvatarButton() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
