@@ -32,6 +32,9 @@
 		005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009C2902C2E9009A49A9 /* AuthView.swift */; };
 		005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009E2902C88B009A49A9 /* SignUPViewController.swift */; };
 		005C00A12902CB3F009A49A9 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C00A02902CB3F009A49A9 /* SignUpView.swift */; };
+		00EDA4C12905469600C4FA89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C02905469600C4FA89 /* User.swift */; };
+		00EDA4C32905484C00C4FA89 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */; };
+		00EDA4C6290548E800C4FA89 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,9 @@
 		005C009C2902C2E9009A49A9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		005C009E2902C88B009A49A9 /* SignUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 		005C00A02902CB3F009A49A9 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		00EDA4C02905469600C4FA89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +95,8 @@
 		0025C5A22904503600E38BB7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0025C5A02904503100E38BB7 /* HomeViewController.swift */,
+				00EDA4CA29054DB900C4FA89 /* Controller */,
+				00EDA4C929054DB300C4FA89 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -152,6 +159,7 @@
 		005C008E2902AA1F009A49A9 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				00EDA4C02905469600C4FA89 /* User.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 				005C00902902AA5D009A49A9 /* TabBarVC */,
 				005C00962902AC7E009A49A9 /* Auth */,
 				005C00972902AD1A009A49A9 /* SignUp */,
+				00EDA4C4290548C200C4FA89 /* AddPhoto */,
 				0025C5A22904503600E38BB7 /* Home */,
 			);
 			path = Flows;
@@ -170,6 +179,7 @@
 		005C00902902AA5D009A49A9 /* TabBarVC */ = {
 			isa = PBXGroup;
 			children = (
+				00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */,
 			);
 			path = TabBarVC;
 			sourceTree = "<group>";
@@ -267,6 +277,45 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		00EDA4C4290548C200C4FA89 /* AddPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				00EDA4C829054DA400C4FA89 /* Controller */,
+				00EDA4C729054D9C00C4FA89 /* View */,
+			);
+			path = AddPhoto;
+			sourceTree = "<group>";
+		};
+		00EDA4C729054D9C00C4FA89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		00EDA4C829054DA400C4FA89 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		00EDA4C929054DB300C4FA89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		00EDA4CA29054DB900C4FA89 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0025C5A02904503100E38BB7 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -358,12 +407,15 @@
 				005C00762902A65A009A49A9 /* AppDelegate.swift in Sources */,
 				005C008A2902A90F009A49A9 /* StartManager.swift in Sources */,
 				0025C58A29042DBD00E38BB7 /* PhoneNomberFormater.swift in Sources */,
+				00EDA4C12905469600C4FA89 /* User.swift in Sources */,
 				0025C5822903EB1B00E38BB7 /* Validators.swift in Sources */,
 				005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */,
+				00EDA4C6290548E800C4FA89 /* AddPhotoViewController.swift in Sources */,
 				0025C5862903EDA000E38BB7 /* AuthResult.swift in Sources */,
 				0025C5842903ED4300E38BB7 /* AuthError.swift in Sources */,
 				005C00A12902CB3F009A49A9 /* SignUpView.swift in Sources */,
 				0025C5A12904503100E38BB7 /* HomeViewController.swift in Sources */,
+				00EDA4C32905484C00C4FA89 /* TabBarViewController.swift in Sources */,
 				005C00782902A65A009A49A9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
