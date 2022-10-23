@@ -32,6 +32,7 @@
 		005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009C2902C2E9009A49A9 /* AuthView.swift */; };
 		005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009E2902C88B009A49A9 /* SignUPViewController.swift */; };
 		005C00A12902CB3F009A49A9 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C00A02902CB3F009A49A9 /* SignUpView.swift */; };
+		00D0A4D62905C8C200697C5F /* examle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0A4D52905C8C200697C5F /* examle.swift */; };
 		00EDA4C12905469600C4FA89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C02905469600C4FA89 /* User.swift */; };
 		00EDA4C32905484C00C4FA89 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */; };
 		00EDA4C6290548E800C4FA89 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */; };
@@ -58,6 +59,7 @@
 		005C009C2902C2E9009A49A9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		005C009E2902C88B009A49A9 /* SignUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 		005C00A02902CB3F009A49A9 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		00D0A4D52905C8C200697C5F /* examle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examle.swift; sourceTree = "<group>"; };
 		00EDA4C02905469600C4FA89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				005C00912902AAAF009A49A9 /* Core */,
 				005C00942902AB14009A49A9 /* Resources */,
 				005C00952902AB79009A49A9 /* Environments */,
+				00D0A4D52905C8C200697C5F /* examle.swift */,
 			);
 			path = ProjectX;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				00EDA4CC29054FF200C4FA89 /* HomeView.swift in Sources */,
 				0025C58A29042DBD00E38BB7 /* PhoneNomberFormater.swift in Sources */,
 				00EDA4CE2905532000C4FA89 /* AddPhotoView.swift in Sources */,
+				00D0A4D62905C8C200697C5F /* examle.swift in Sources */,
 				00EDA4C12905469600C4FA89 /* User.swift in Sources */,
 				0025C5822903EB1B00E38BB7 /* Validators.swift in Sources */,
 				005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */,

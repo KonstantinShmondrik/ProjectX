@@ -34,7 +34,7 @@ class AddPhotoViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationItem.hidesBackButton = false
+        navigationController?.navigationItem.hidesBackButton = true
     }
    
 

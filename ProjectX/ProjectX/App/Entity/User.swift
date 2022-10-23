@@ -7,18 +7,19 @@
 
 import Foundation
 
+
+
 class User {
     
-    let firstname: String?
-    let lastname: String?
-    let phoneNomber: String?
-    let email: String?
-    let dateOfBirth: String?
-    let avatarURL: String?
-    let uid: String?
-    let photos: [String]?
+    var firstname: String?
+    var lastname: String?
+    var phoneNomber: String?
+    var email: String?
+    var dateOfBirth: String?
+    var avatarURL: String?
+    var uid: String?
     
-    init(firstname: String?, lastname: String?, phoneNomber: String?, email: String?, dateOfBirth: String?, avatarURL: String?, uid: String?, photos: [String]?) {
+    init(firstname: String? = nil, lastname: String? = nil, phoneNomber: String? = nil, email: String? = nil, dateOfBirth: String? = nil, avatarURL: String? = nil, uid: String? = nil) {
         self.firstname = firstname
         self.lastname = lastname
         self.phoneNomber = phoneNomber
@@ -26,7 +27,9 @@ class User {
         self.dateOfBirth = dateOfBirth
         self.avatarURL = avatarURL
         self.uid = uid
-        self.photos = photos
     }
-    
+
 }
+
+
+

@@ -114,12 +114,12 @@ class SignUPViewController: UIViewController {
                 return
             }
             self.upload(currentUserId: result.user.uid,
-                        photo: self.signUpView.avatarImage.image!) { (uploadResult) in
+                        photo: self.signUpView.avatarImage.image!) { uploadResult in
                 switch uploadResult {
                 case .success(let url):
                     self.urlString = url.absoluteString
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: [
+                    db.collection("users_\(result.user.uid)").document("User_data").setData([
                         "firstname": self.signUpView.nameTexField.text ?? "",
                         "lastname": self.signUpView.lastnameTexField.text ?? "",
                         "phoneNomber": self.signUpView.phoneNomberTexField.text ?? "",

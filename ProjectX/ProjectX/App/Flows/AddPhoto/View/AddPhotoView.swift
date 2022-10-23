@@ -127,9 +127,7 @@ class AddPhotoView: UIView {
     }
     
     // MARK: - private func
-    
   
-    
     private func isFormFilled() -> Bool {
         guard photoImage.image != nil else {
             return false
