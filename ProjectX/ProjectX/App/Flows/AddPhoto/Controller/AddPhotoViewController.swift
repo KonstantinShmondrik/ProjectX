@@ -9,7 +9,7 @@ import UIKit
 
 class AddPhotoViewController: UIViewController {
 
-    private var addPhoto: AddPhotoView {
+    private var addPhotoView: AddPhotoView {
         return self.view as! AddPhotoView
     }
     
@@ -20,7 +20,7 @@ class AddPhotoViewController: UIViewController {
     override func loadView() {
         super.loadView()
         let view = AddPhotoView()
-//        view.delegate = self
+        view.delegate = self
         self.view = view
     }
     
@@ -39,3 +39,33 @@ class AddPhotoViewController: UIViewController {
    
 
 }
+
+// MARK: - AddPhotoViewProtocol
+extension AddPhotoViewController: AddPhotoViewProtocol {
+    
+    func tapAddPhotoButton() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func tapUploadPhotoButton() {
+        print("tap upload photo")
+        addPhotoView.photoImage.image = nil
+        self.tabBarController?.selectedIndex = 1
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+    extension AddPhotoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        addPhotoView.photoImage.image = image
+    }
+}
+

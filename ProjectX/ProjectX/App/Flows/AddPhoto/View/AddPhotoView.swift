@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol AddPhotoViewProtocol: AnyObject {
+    
+    func tapAddPhotoButton()
+    func tapUploadPhotoButton()
+    
+}
+
 class AddPhotoView: UIView {
     
     // MARK: - Subviews
@@ -43,7 +50,7 @@ class AddPhotoView: UIView {
         button.backgroundColor = .clear
         button.tintColor = .systemBlue
         button.setTitle("Add photo", for: .normal)
-//        button.addTarget(self, action: #selector(addPhotoButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addPhotoButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -54,14 +61,14 @@ class AddPhotoView: UIView {
         button.backgroundColor = .clear
         button.tintColor = .systemBlue
         button.setTitle("Upload", for: .normal)
-//        button.addTarget(self, action: #selector(uploadPhotoButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(uploadPhotoButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
-    // MARK: - Properties
-//    weak var delegate: SignUpViewProtocol?
+//     MARK: - Properties
+    weak var delegate: AddPhotoViewProtocol?
     
     // MARK: - Init
     
@@ -132,15 +139,15 @@ class AddPhotoView: UIView {
     
     // MARK: - Actions
     
-    @objc private func registButtonPressed() {
+    @objc private func addPhotoButtonPressed() {
         
-//        delegate?.tapSignUPButton()
+        delegate?.tapAddPhotoButton()
         
     }
     
-    @objc private func addAvatarButtonPressed() {
+    @objc private func uploadPhotoButtonPressed() {
         
-//        delegate?.tapAddAvatarButton()
+        delegate?.tapUploadPhotoButton()
         
     }
     

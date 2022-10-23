@@ -22,6 +22,10 @@ class AuthViewController: UIViewController {
         view.delegate = self
         self.view = view
         
+        view.loginTexField.text = "test@test.ru"
+        view.passwordTexField.text = "Zxc1zxc"
+        
+        
         
     }
     
