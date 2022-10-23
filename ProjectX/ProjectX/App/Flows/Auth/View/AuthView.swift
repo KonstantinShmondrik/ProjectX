@@ -22,9 +22,20 @@ class AuthView: UIView {
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 2000)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.isPagingEnabled = false
-        
-        
+
         return scrollView
+    }()
+    
+    private(set) lazy var hederLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Welcome to ProjectX"
+        label.numberOfLines = 1
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 20.0)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
     }()
     
     private(set) lazy var loginTexField: UITextField = {
@@ -97,6 +108,7 @@ class AuthView: UIView {
         self.backgroundColor = .white
         self.addSubview(self.scrollView)
         self.scrollView.addSubview(self.loginTexField)
+        self.scrollView.addSubview(self.hederLabel)
         self.scrollView.addSubview(self.passwordTexField)
         self.scrollView.addSubview(self.loginButton)
         self.scrollView.addSubview(self.signUPButton)
@@ -108,7 +120,12 @@ class AuthView: UIView {
             self.scrollView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,constant: 0.0),
             self.scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,constant: 0.0),
             
-            self.loginTexField.topAnchor.constraint(lessThanOrEqualTo: self.scrollView.topAnchor, constant: 50),
+            self.hederLabel.topAnchor.constraint(lessThanOrEqualTo: self.scrollView.topAnchor, constant: 20),
+            self.hederLabel.heightAnchor.constraint(equalToConstant: 30.0),
+            self.hederLabel.widthAnchor.constraint(equalToConstant: 400.0),
+            self.hederLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
+            
+            self.loginTexField.topAnchor.constraint(lessThanOrEqualTo: self.hederLabel.bottomAnchor, constant: 50),
             self.loginTexField.heightAnchor.constraint(equalToConstant: 50.0),
             self.loginTexField.widthAnchor.constraint(equalToConstant: 350.0),
             self.loginTexField.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
