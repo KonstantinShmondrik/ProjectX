@@ -35,6 +35,8 @@
 		00EDA4C12905469600C4FA89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C02905469600C4FA89 /* User.swift */; };
 		00EDA4C32905484C00C4FA89 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */; };
 		00EDA4C6290548E800C4FA89 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */; };
+		00EDA4CC29054FF200C4FA89 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4CB29054FF200C4FA89 /* HomeView.swift */; };
+		00EDA4CE2905532000C4FA89 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4CD2905532000C4FA89 /* AddPhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		00EDA4C02905469600C4FA89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
+		00EDA4CB29054FF200C4FA89 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		00EDA4CD2905532000C4FA89 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +293,7 @@
 		00EDA4C729054D9C00C4FA89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				00EDA4CD2905532000C4FA89 /* AddPhotoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 		00EDA4C929054DB300C4FA89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				00EDA4CB29054FF200C4FA89 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,7 +412,9 @@
 				005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */,
 				005C00762902A65A009A49A9 /* AppDelegate.swift in Sources */,
 				005C008A2902A90F009A49A9 /* StartManager.swift in Sources */,
+				00EDA4CC29054FF200C4FA89 /* HomeView.swift in Sources */,
 				0025C58A29042DBD00E38BB7 /* PhoneNomberFormater.swift in Sources */,
+				00EDA4CE2905532000C4FA89 /* AddPhotoView.swift in Sources */,
 				00EDA4C12905469600C4FA89 /* User.swift in Sources */,
 				0025C5822903EB1B00E38BB7 /* Validators.swift in Sources */,
 				005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */,

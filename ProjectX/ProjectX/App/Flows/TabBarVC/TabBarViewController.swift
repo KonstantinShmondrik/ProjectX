@@ -13,6 +13,7 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         super.viewDidLoad()
         self.delegate = self
         
+        
         let addPhotoVC = AddPhotoViewController()
         
         let tabBarItemAddPhoto = UITabBarItem(title: "",
@@ -24,7 +25,7 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         let homeVC = HomeViewController()
         
-        let tabBarItemHome = UITabBarItem(title: "Пользователь",
+        let tabBarItemHome = UITabBarItem(title: "",
                                           image: UIImage(systemName: "person.crop.circle"),
                                           selectedImage: UIImage(systemName: "person.crop.circle.fill"))
         
@@ -33,6 +34,6 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         self.viewControllers = [addPhotoVC, homeVC]
         
         self.selectedIndex = 1
-        
+
     }
 }

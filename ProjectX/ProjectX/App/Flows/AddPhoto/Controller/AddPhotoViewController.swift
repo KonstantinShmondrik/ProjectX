@@ -9,12 +9,32 @@ import UIKit
 
 class AddPhotoViewController: UIViewController {
 
+    private var addPhoto: AddPhotoView {
+        return self.view as! AddPhotoView
+    }
+    
+ 
+    
+    // MARK: - Lifecycle
+    
+    override func loadView() {
+        super.loadView()
+        let view = AddPhotoView()
+//        view.delegate = self
+        self.view = view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-
-       
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationItem.hidesBackButton = false
     }
    
 
