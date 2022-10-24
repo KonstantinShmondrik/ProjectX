@@ -49,7 +49,7 @@ class AddPhotoView: UIView {
         let button = UIButton(type: .system)
         button.backgroundColor = .clear
         button.tintColor = .systemBlue
-        button.setTitle("Add photo", for: .normal)
+        button.setTitle("Select photo", for: .normal)
         button.addTarget(self, action: #selector(addPhotoButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         

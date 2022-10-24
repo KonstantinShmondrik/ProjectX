@@ -32,7 +32,10 @@
 		005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009C2902C2E9009A49A9 /* AuthView.swift */; };
 		005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C009E2902C88B009A49A9 /* SignUPViewController.swift */; };
 		005C00A12902CB3F009A49A9 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C00A02902CB3F009A49A9 /* SignUpView.swift */; };
-		00D0A4D62905C8C200697C5F /* examle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0A4D52905C8C200697C5F /* examle.swift */; };
+		00637308290665860076EB24 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00637307290665860076EB24 /* PhotosCollectionViewCell.swift */; };
+		0063730A2906770A0076EB24 /* UICollectionView+RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006373092906770A0076EB24 /* UICollectionView+RegisterCell.swift */; };
+		0063730C2906CE2F0076EB24 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063730B2906CE2F0076EB24 /* Photo.swift */; };
+		0063730E2906F33E0076EB24 /* AppPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063730D2906F33E0076EB24 /* AppPhotos.swift */; };
 		00EDA4C12905469600C4FA89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C02905469600C4FA89 /* User.swift */; };
 		00EDA4C32905484C00C4FA89 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */; };
 		00EDA4C6290548E800C4FA89 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */; };
@@ -59,7 +62,10 @@
 		005C009C2902C2E9009A49A9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		005C009E2902C88B009A49A9 /* SignUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 		005C00A02902CB3F009A49A9 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		00D0A4D52905C8C200697C5F /* examle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examle.swift; sourceTree = "<group>"; };
+		00637307290665860076EB24 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		006373092906770A0076EB24 /* UICollectionView+RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+RegisterCell.swift"; sourceTree = "<group>"; };
+		0063730B2906CE2F0076EB24 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		0063730D2906F33E0076EB24 /* AppPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPhotos.swift; sourceTree = "<group>"; };
 		00EDA4C02905469600C4FA89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +136,6 @@
 				005C00912902AAAF009A49A9 /* Core */,
 				005C00942902AB14009A49A9 /* Resources */,
 				005C00952902AB79009A49A9 /* Environments */,
-				00D0A4D52905C8C200697C5F /* examle.swift */,
 			);
 			path = ProjectX;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 		005C008C2902A9C9009A49A9 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				0063730F2906F39B0076EB24 /* AppPhotos */,
 				005C008D2902A9E8009A49A9 /* AppStartManager */,
 			);
 			path = BusinessLogic;
@@ -167,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				00EDA4C02905469600C4FA89 /* User.swift */,
+				0063730B2906CE2F0076EB24 /* Photo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				0025C5872904119200E38BB7 /* UIViewController + Extension.swift */,
+				006373092906770A0076EB24 /* UICollectionView+RegisterCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,6 +292,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		0063730F2906F39B0076EB24 /* AppPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				0063730D2906F33E0076EB24 /* AppPhotos.swift */,
+			);
+			path = AppPhotos;
+			sourceTree = "<group>";
+		};
 		00EDA4C4290548C200C4FA89 /* AddPhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				00EDA4CB29054FF200C4FA89 /* HomeView.swift */,
+				00637307290665860076EB24 /* PhotosCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,15 +427,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0063730C2906CE2F0076EB24 /* Photo.swift in Sources */,
 				0025C5882904119200E38BB7 /* UIViewController + Extension.swift in Sources */,
 				005C007A2902A65A009A49A9 /* AuthViewController.swift in Sources */,
 				005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */,
 				005C00762902A65A009A49A9 /* AppDelegate.swift in Sources */,
 				005C008A2902A90F009A49A9 /* StartManager.swift in Sources */,
+				0063730E2906F33E0076EB24 /* AppPhotos.swift in Sources */,
 				00EDA4CC29054FF200C4FA89 /* HomeView.swift in Sources */,
 				0025C58A29042DBD00E38BB7 /* PhoneNomberFormater.swift in Sources */,
 				00EDA4CE2905532000C4FA89 /* AddPhotoView.swift in Sources */,
-				00D0A4D62905C8C200697C5F /* examle.swift in Sources */,
 				00EDA4C12905469600C4FA89 /* User.swift in Sources */,
 				0025C5822903EB1B00E38BB7 /* Validators.swift in Sources */,
 				005C009F2902C88B009A49A9 /* SignUPViewController.swift in Sources */,
@@ -426,8 +444,10 @@
 				0025C5862903EDA000E38BB7 /* AuthResult.swift in Sources */,
 				0025C5842903ED4300E38BB7 /* AuthError.swift in Sources */,
 				005C00A12902CB3F009A49A9 /* SignUpView.swift in Sources */,
+				0063730A2906770A0076EB24 /* UICollectionView+RegisterCell.swift in Sources */,
 				0025C5A12904503100E38BB7 /* HomeViewController.swift in Sources */,
 				00EDA4C32905484C00C4FA89 /* TabBarViewController.swift in Sources */,
+				00637308290665860076EB24 /* PhotosCollectionViewCell.swift in Sources */,
 				005C00782902A65A009A49A9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

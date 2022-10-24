@@ -18,7 +18,8 @@ class HomeViewController: UIViewController {
     let id = Auth.auth().currentUser!.uid
        let email = Auth.auth().currentUser!.email
     var user = User(firstname: "", lastname: "", phoneNomber: "", email: "", dateOfBirth: "", avatarURL: "", uid: "")
-    
+    var photos = AppPhotos.shared.items
+
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,11 +27,18 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationItem.hidesBackButton = false
+        print("\(AppPhotos.shared.items)")
+        let photo = AppPhotos.shared.items
+        self.photos = photo
+        homeView.collectionView.reloadData()
     }
-    
+
     override func loadView() {
         super.loadView()
         let view = HomeView()
+        view.collectionView.delegate = self
+        view.collectionView.dataSource = self
+//        view.collectionView.reloadData()
         //        view.delegate = self
         self.view = view
         
@@ -49,6 +57,8 @@ class HomeViewController: UIViewController {
                 print("\(name)")
             }
         }
+        
+        
     }
     
     // MARK: - private func
@@ -65,10 +75,8 @@ class HomeViewController: UIViewController {
         }
         
     }
-    
 
-    
-    func getName(completion: @escaping (_ name: String?) -> Void) {
+    private func getName(completion: @escaping (_ name: String?) -> Void) {
             guard let uid = Auth.auth().currentUser?.uid else {
                 completion(nil)
                 return
@@ -103,7 +111,75 @@ class HomeViewController: UIViewController {
             }
         }
     
+    // MARK: - private func
     
 
+
+}
+
+extension HomeViewController: HomeViewProtocol {
+    func showPhotoDitail() {
+        print("нажата ячейка")
+    }
+    
     
 }
+
+
+// MARK: - UICollectionViewDelegate
+extension HomeView: UICollectionViewDelegate {
+    
+}
+
+// MARK: - UICollectionViewDataSource
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell: PhotosCollectionViewCell = collectionView.cell(forRowAt: indexPath) else { return UICollectionViewCell() }
+
+        cell.backgroundColor = .gray
+        
+        let photo = photos[indexPath.item]
+        cell.pictureImageView.image = photo.photo
+
+        cell.layoutIfNeeded()
+        return cell
+    }
+}
+
+// MARK: - DidSelectItemAt
+extension HomeViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        delegate?.showPhotoDitail()
+        print("нажата ячейка \(indexPath.item)")
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: (collectionView.frame.width - 15 - 15)/3,
+                     height: (collectionView.frame.width - 15 - 15)/3)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2.5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+}
+
+

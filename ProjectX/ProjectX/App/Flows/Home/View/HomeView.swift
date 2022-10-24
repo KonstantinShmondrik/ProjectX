@@ -7,7 +7,17 @@
 
 import UIKit
 
+protocol HomeViewProtocol {
+    
+    func showPhotoDitail()
+}
+ 
 class HomeView: UIView {
+    
+    // MARK: - Properties
+   
+    var photo: [Photo]?
+    var delegate: HomeViewProtocol?
     
     // MARK: - Subviews
     
@@ -21,7 +31,6 @@ class HomeView: UIView {
     
     private (set) lazy var hederView: UIView = {
         let view = UIView(frame: frame)
-//        view.backgroundColor = .green
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -60,25 +69,50 @@ class HomeView: UIView {
         return image
     }()
     
+    private(set) lazy var collectionView: UICollectionView = {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.layer.borderWidth = 1
+        collectionView.layer.backgroundColor = .init(gray: 1, alpha: 0.5)
+        collectionView.allowsSelection = true
+        collectionView.isUserInteractionEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.layoutIfNeeded()
+        collectionView.registerClass(PhotosCollectionViewCell.self)
+        
+        return collectionView
+        
+    }()
+    
     
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureUI()
+        self.addSubviewsContent()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        configureUI()
+    }
+
     // MARK: - UI
     
-    private func configureUI() {
+    func addSubviewsContent() {
         self.backgroundColor = .white
         self.addSubview(self.conteinerView)
         
-        [self.hederView
+        [self.hederView,
+         self.collectionView
         ].forEach {
             self.conteinerView.addSubview($0)
         }
@@ -89,6 +123,10 @@ class HomeView: UIView {
         ].forEach {
             self.hederView.addSubview($0)
         }
+    }
+    
+    private func configureUI() {
+       
         
         NSLayoutConstraint.activate([
             self.conteinerView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0.0),
@@ -112,8 +150,10 @@ class HomeView: UIView {
             self.userAgeLabel.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor, constant: 10),
             self.userAgeLabel.leftAnchor.constraint(equalTo: self.avatarImage.rightAnchor, constant: 20),
             
+            self.collectionView.topAnchor.constraint(equalTo: self.hederView.bottomAnchor, constant: 0.0),
+            self.collectionView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor,constant: 0.0),
+            self.collectionView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,constant: 0.0),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,constant: 0.0),
         ])
-        
     }
-    
 }

@@ -6,14 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class AddPhotoViewController: UIViewController {
-
+    
     private var addPhotoView: AddPhotoView {
         return self.view as! AddPhotoView
     }
-    
- 
     
     // MARK: - Lifecycle
     
@@ -27,7 +26,6 @@ class AddPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,8 +34,7 @@ class AddPhotoViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationItem.hidesBackButton = true
     }
-   
-
+    
 }
 
 // MARK: - AddPhotoViewProtocol
@@ -51,15 +48,24 @@ extension AddPhotoViewController: AddPhotoViewProtocol {
     }
     
     func tapUploadPhotoButton() {
-        print("tap upload photo")
-        addPhotoView.photoImage.image = nil
-        self.tabBarController?.selectedIndex = 1
+        
+        let photo = Photo(userID: Auth.auth().currentUser!.uid,
+                          photo: addPhotoView.photoImage.image,
+                          dateUpload: Date())
+        if photo.photo != nil {
+            AppPhotos.shared.items.append(photo)
+            
+            addPhotoView.photoImage.image = nil
+            self.tabBarController?.selectedIndex = 1
+        }
+        
+        
     }
 }
 
 // MARK: - UIImagePickerControllerDelegate
 
-    extension AddPhotoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+extension AddPhotoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         

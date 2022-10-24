@@ -55,7 +55,7 @@ extension AuthViewController: AuthViewProtocol {
             } else {
                 self.showAlert(with: "Welcome", and: "You are logged in", completion: {
                     self.navigationController?.pushViewController(TabBarViewController(), animated: true)
-                    print(result?.user.uid)
+                    
                 })
             }
         }
