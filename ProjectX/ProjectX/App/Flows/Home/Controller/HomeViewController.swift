@@ -45,10 +45,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         getUserData { (data) in
             if let data = data {
+                
                 self.downloadUsersData(urlString: self.user.avatarURL ?? "")
                 self.homeView.userNameLabel.text = "\(self.user.firstname ?? "") \(self.user.lastname ?? "")"
-                self.homeView.userAgeLabel.text = "\(self.user.dateOfBirth ?? "")"
                 self.homeView.userAgeLabel.text = "\(self.calcAge(birthday: self.user.dateOfBirth ?? "")) years"
+                
                 print("\(data)")
             }
         }
@@ -69,12 +70,13 @@ class HomeViewController: UIViewController {
     }
     
     private func calcAge(birthday: String) -> Int {
+        
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "MM/dd/yyyy"
-        let birthdayDate = dateFormater.date(from: birthday)
+        dateFormater.dateFormat = "dd.MM.yyyy"
+        guard let birthdayDate = dateFormater.date(from: birthday) else { return 0 }
         let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
         let now = Date()
-        let calcAge = calendar.components(.year, from: birthdayDate!, to: now, options: [])
+        let calcAge = calendar.components(.year, from: birthdayDate, to: now, options: [])
         let age = calcAge.year
         return age!
     }
@@ -143,8 +145,6 @@ extension HomeViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         self.navigationController?.pushViewController(PhotoDitailViewController(user: user, photo: photos[indexPath.item]), animated: true)
-        
-        print("нажата ячейка \(indexPath.item)")
     }
 }
 
