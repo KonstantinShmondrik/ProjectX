@@ -21,12 +21,11 @@ class AuthViewController: UIViewController {
         let view = AuthView()
         view.delegate = self
         self.view = view
-        
-        view.loginTexField.text = "test3@test.ru"
-        view.passwordTexField.text = "Zxc1zxc"
-        
-        
-        
+
+///        for debaging
+//        view.loginTexField.text = "test3@test.ru"
+//        view.passwordTexField.text = "Zxc1zxc"
+
     }
     
     override func viewDidLoad() {
