@@ -46,7 +46,7 @@ class SignUpView: UIView {
     
     private(set) lazy var hederLabel: UILabel = {
         let label = UILabel()
-        label.text = "Registration"
+        label.text = "[Sign-Up Page]"
         label.numberOfLines = 1
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20.0)

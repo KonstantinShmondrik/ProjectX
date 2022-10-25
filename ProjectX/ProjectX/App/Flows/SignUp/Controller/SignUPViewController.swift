@@ -108,6 +108,12 @@ class SignUPViewController: UIViewController {
             return
         }
         
+        guard signUpView.avatarImage.image != UIImage(named: "noPhoto")  else {
+            completion(.failure(AuthError.photoNotExist))
+            signUpView.passwordTexField.text = ""
+            return
+        }
+        
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             guard let result = result else {
                 completion(.failure(error!))

@@ -27,7 +27,7 @@ class AddPhotoView: UIView {
     }()
     private(set) lazy var hederLabel: UILabel = {
         let label = UILabel()
-        label.text = "Add Photo"
+        label.text = "[Photo Upload Page]"
         label.numberOfLines = 1
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20.0)

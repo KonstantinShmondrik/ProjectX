@@ -7,17 +7,11 @@
 
 import UIKit
 
-protocol HomeViewProtocol {
-    
-    func showPhotoDitail()
-}
- 
 class HomeView: UIView {
     
     // MARK: - Properties
-   
-    var photo: [Photo]?
-    var delegate: HomeViewProtocol?
+    
+    
     
     // MARK: - Subviews
     
@@ -104,7 +98,7 @@ class HomeView: UIView {
         super.layoutSubviews()
         configureUI()
     }
-
+    
     // MARK: - UI
     
     func addSubviewsContent() {
@@ -126,7 +120,7 @@ class HomeView: UIView {
     }
     
     private func configureUI() {
-       
+        
         
         NSLayoutConstraint.activate([
             self.conteinerView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0.0),

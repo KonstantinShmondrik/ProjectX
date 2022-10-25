@@ -36,6 +36,8 @@
 		0063730A2906770A0076EB24 /* UICollectionView+RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006373092906770A0076EB24 /* UICollectionView+RegisterCell.swift */; };
 		0063730C2906CE2F0076EB24 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063730B2906CE2F0076EB24 /* Photo.swift */; };
 		0063730E2906F33E0076EB24 /* AppPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063730D2906F33E0076EB24 /* AppPhotos.swift */; };
+		006373142907BCC90076EB24 /* PhotoDitailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006373132907BCC90076EB24 /* PhotoDitailViewController.swift */; };
+		006373162907BCF00076EB24 /* PhotoDitailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006373152907BCF00076EB24 /* PhotoDitailView.swift */; };
 		00EDA4C12905469600C4FA89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C02905469600C4FA89 /* User.swift */; };
 		00EDA4C32905484C00C4FA89 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */; };
 		00EDA4C6290548E800C4FA89 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */; };
@@ -66,6 +68,8 @@
 		006373092906770A0076EB24 /* UICollectionView+RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+RegisterCell.swift"; sourceTree = "<group>"; };
 		0063730B2906CE2F0076EB24 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0063730D2906F33E0076EB24 /* AppPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPhotos.swift; sourceTree = "<group>"; };
+		006373132907BCC90076EB24 /* PhotoDitailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDitailViewController.swift; sourceTree = "<group>"; };
+		006373152907BCF00076EB24 /* PhotoDitailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDitailView.swift; sourceTree = "<group>"; };
 		00EDA4C02905469600C4FA89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00EDA4C22905484C00C4FA89 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		00EDA4C5290548E800C4FA89 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				005C00972902AD1A009A49A9 /* SignUp */,
 				00EDA4C4290548C200C4FA89 /* AddPhoto */,
 				0025C5A22904503600E38BB7 /* Home */,
+				006373102907BC440076EB24 /* PhotoDitail */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -298,6 +303,31 @@
 				0063730D2906F33E0076EB24 /* AppPhotos.swift */,
 			);
 			path = AppPhotos;
+			sourceTree = "<group>";
+		};
+		006373102907BC440076EB24 /* PhotoDitail */ = {
+			isa = PBXGroup;
+			children = (
+				006373122907BC7A0076EB24 /* Controller */,
+				006373112907BC730076EB24 /* View */,
+			);
+			path = PhotoDitail;
+			sourceTree = "<group>";
+		};
+		006373112907BC730076EB24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				006373152907BCF00076EB24 /* PhotoDitailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		006373122907BC7A0076EB24 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				006373132907BCC90076EB24 /* PhotoDitailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		00EDA4C4290548C200C4FA89 /* AddPhoto */ = {
@@ -431,7 +461,9 @@
 				0025C5882904119200E38BB7 /* UIViewController + Extension.swift in Sources */,
 				005C007A2902A65A009A49A9 /* AuthViewController.swift in Sources */,
 				005C009D2902C2E9009A49A9 /* AuthView.swift in Sources */,
+				006373162907BCF00076EB24 /* PhotoDitailView.swift in Sources */,
 				005C00762902A65A009A49A9 /* AppDelegate.swift in Sources */,
+				006373142907BCC90076EB24 /* PhotoDitailViewController.swift in Sources */,
 				005C008A2902A90F009A49A9 /* StartManager.swift in Sources */,
 				0063730E2906F33E0076EB24 /* AppPhotos.swift in Sources */,
 				00EDA4CC29054FF200C4FA89 /* HomeView.swift in Sources */,

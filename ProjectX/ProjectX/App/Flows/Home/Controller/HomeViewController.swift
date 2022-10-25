@@ -16,10 +16,10 @@ class HomeViewController: UIViewController {
     }
     
     let id = Auth.auth().currentUser!.uid
-       let email = Auth.auth().currentUser!.email
+    let email = Auth.auth().currentUser!.email
     var user = User(firstname: "", lastname: "", phoneNomber: "", email: "", dateOfBirth: "", avatarURL: "", uid: "")
     var photos = AppPhotos.shared.items
-
+    
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,19 +27,16 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationItem.hidesBackButton = false
-        print("\(AppPhotos.shared.items)")
         let photo = AppPhotos.shared.items
         self.photos = photo
         homeView.collectionView.reloadData()
     }
-
+    
     override func loadView() {
         super.loadView()
         let view = HomeView()
         view.collectionView.delegate = self
         view.collectionView.dataSource = self
-//        view.collectionView.reloadData()
-        //        view.delegate = self
         self.view = view
         
     }
@@ -75,56 +72,45 @@ class HomeViewController: UIViewController {
         }
         
     }
-
+    
     private func getName(completion: @escaping (_ name: String?) -> Void) {
-            guard let uid = Auth.auth().currentUser?.uid else {
-                completion(nil)
-                return
-            }
-
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
         let docRef = Firestore.firestore().collection("users_\(uid)").document("User_data")
         docRef.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("Document data: \(dataDescription)")
-                    let firstname = document.get("firstname") as? String
-                    let lastname = document.get("lastname") as? String
-                    let phoneNomber = document.get("phoneNomber") as? String
-                    let email = document.get("email") as? String
-                    let dateOfBirth = document.get("dateOfBirth") as? String
-                    let avatarURL = document.get("avatarURL") as? String
-                    let uid = document.get("uid") as? String
-                    self.user = User(firstname: firstname,
-                                     lastname: lastname,
-                                     phoneNomber: phoneNomber,
-                                     email: email,
-                                     dateOfBirth: dateOfBirth,
-                                     avatarURL: avatarURL,
-                                     uid: uid)
-                    
-//                    self.downloadUsersData(urlString: self.user.avatarURL ?? "")
-
-                } else {
-                    print("Document does not exist")
-                }
-                completion("put the first name data here after we figure out what's in the doc")
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                let firstname = document.get("firstname") as? String
+                let lastname = document.get("lastname") as? String
+                let phoneNomber = document.get("phoneNomber") as? String
+                let email = document.get("email") as? String
+                let dateOfBirth = document.get("dateOfBirth") as? String
+                let avatarURL = document.get("avatarURL") as? String
+                let uid = document.get("uid") as? String
+                self.user = User(firstname: firstname,
+                                 lastname: lastname,
+                                 phoneNomber: phoneNomber,
+                                 email: email,
+                                 dateOfBirth: dateOfBirth,
+                                 avatarURL: avatarURL,
+                                 uid: uid)
+                
+            } else {
+                print("Document does not exist")
             }
+            completion("put the first name data here after we figure out what's in the doc")
         }
+    }
     
     // MARK: - private func
     
-
-
-}
-
-extension HomeViewController: HomeViewProtocol {
-    func showPhotoDitail() {
-        print("нажата ячейка")
-    }
     
     
 }
-
 
 // MARK: - UICollectionViewDelegate
 extension HomeView: UICollectionViewDelegate {
@@ -139,12 +125,12 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell: PhotosCollectionViewCell = collectionView.cell(forRowAt: indexPath) else { return UICollectionViewCell() }
-
+        
         cell.backgroundColor = .gray
         
         let photo = photos[indexPath.item]
         cell.pictureImageView.image = photo.photo
-
+        
         cell.layoutIfNeeded()
         return cell
     }
@@ -154,7 +140,9 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        delegate?.showPhotoDitail()
+        
+        self.navigationController?.pushViewController(PhotoDitailViewController(user: user, photo: photos[indexPath.item]), animated: true)
+        
         print("нажата ячейка \(indexPath.item)")
     }
 }
