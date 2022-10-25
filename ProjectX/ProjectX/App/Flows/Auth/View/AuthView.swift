@@ -28,7 +28,7 @@ class AuthView: UIView {
     
     private(set) lazy var hederLabel: UILabel = {
         let label = UILabel()
-        label.text = "Welcome to ProjectX"
+        label.text = "[Welcome Page]"
         label.numberOfLines = 1
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20.0)

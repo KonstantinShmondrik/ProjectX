@@ -40,7 +40,7 @@ extension AuthError: LocalizedError {
         case .serverError:
             return NSLocalizedString("server_error", comment: "")
         case .photoNotExist:
-            return NSLocalizedString("Пользователь не выбрал фотографию", comment: "")
+            return NSLocalizedString("Upload profile photo", comment: "")
         }
     }
 }

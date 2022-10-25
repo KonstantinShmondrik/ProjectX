@@ -108,18 +108,24 @@ class SignUPViewController: UIViewController {
             return
         }
         
+        guard signUpView.avatarImage.image != UIImage(named: "noPhoto")  else {
+            completion(.failure(AuthError.photoNotExist))
+            signUpView.passwordTexField.text = ""
+            return
+        }
+        
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             guard let result = result else {
                 completion(.failure(error!))
                 return
             }
             self.upload(currentUserId: result.user.uid,
-                        photo: self.signUpView.avatarImage.image!) { (uploadResult) in
+                        photo: self.signUpView.avatarImage.image!) { uploadResult in
                 switch uploadResult {
                 case .success(let url):
                     self.urlString = url.absoluteString
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: [
+                    db.collection("users_\(result.user.uid)").document("User_data").setData([
                         "firstname": self.signUpView.nameTexField.text ?? "",
                         "lastname": self.signUpView.lastnameTexField.text ?? "",
                         "phoneNomber": self.signUpView.phoneNomberTexField.text ?? "",
