@@ -207,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				0025C5802903EAFC00E38BB7 /* Helpers */,
-				005C00932902AAF0009A49A9 /* UIComponents */,
 				005C00922902AADE009A49A9 /* Extensions */,
 			);
 			path = Core;
@@ -220,13 +219,6 @@
 				006373092906770A0076EB24 /* UICollectionView+RegisterCell.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		005C00932902AAF0009A49A9 /* UIComponents */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIComponents;
 			sourceTree = "<group>";
 		};
 		005C00942902AB14009A49A9 /* Resources */ = {

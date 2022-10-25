@@ -41,21 +41,17 @@ class HomeViewController: UIViewController {
         
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getName { (name) in
-            if let name = name {
+        getUserData { (data) in
+            if let data = data {
                 self.downloadUsersData(urlString: self.user.avatarURL ?? "")
                 self.homeView.userNameLabel.text = "\(self.user.firstname ?? "") \(self.user.lastname ?? "")"
                 self.homeView.userAgeLabel.text = "\(self.user.dateOfBirth ?? "")"
-                
-                print("\(name)")
+                self.homeView.userAgeLabel.text = "\(self.calcAge(birthday: self.user.dateOfBirth ?? "")) years"
+                print("\(data)")
             }
         }
-        
-        
     }
     
     // MARK: - private func
@@ -70,10 +66,20 @@ class HomeViewController: UIViewController {
             let image = UIImage(data: imageData)
             self.homeView.avatarImage.image = image
         }
-        
     }
     
-    private func getName(completion: @escaping (_ name: String?) -> Void) {
+    private func calcAge(birthday: String) -> Int {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "MM/dd/yyyy"
+        let birthdayDate = dateFormater.date(from: birthday)
+        let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
+        let now = Date()
+        let calcAge = calendar.components(.year, from: birthdayDate!, to: now, options: [])
+        let age = calcAge.year
+        return age!
+    }
+    
+    private func getUserData(completion: @escaping (_ name: String?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else {
             completion(nil)
             return
@@ -105,11 +111,6 @@ class HomeViewController: UIViewController {
             completion("put the first name data here after we figure out what's in the doc")
         }
     }
-    
-    // MARK: - private func
-    
-    
-    
 }
 
 // MARK: - UICollectionViewDelegate
