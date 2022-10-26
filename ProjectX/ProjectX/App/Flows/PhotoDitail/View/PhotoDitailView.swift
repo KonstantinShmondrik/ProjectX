@@ -99,6 +99,8 @@ class PhotoDitailView: UIView  {
         
         let stringDate = dateFormater.string(from: photo.dateUpload ?? Date())
         self.dateLabel.text = stringDate
+        
+        print(photo.videoUrl)
     }
     
     // MARK: - UI

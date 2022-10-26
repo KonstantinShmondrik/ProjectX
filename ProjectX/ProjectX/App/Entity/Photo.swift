@@ -11,4 +11,5 @@ struct Photo {
     let userID: String?
     let photo: UIImage?
     let dateUpload: Date?
+    let videoUrl: NSURL?
 }
