@@ -55,6 +55,7 @@ class AuthView: UIView {
         textField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.borderStyle = .bezel
         textField.autocapitalizationType = .none
+        textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
