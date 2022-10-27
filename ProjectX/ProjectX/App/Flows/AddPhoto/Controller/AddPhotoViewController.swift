@@ -7,8 +7,12 @@
 
 import UIKit
 import Firebase
+import AVKit
 
 class AddPhotoViewController: UIViewController {
+    
+    var videoURL: NSURL?
+    var photo: Photo?
     
     private var addPhotoView: AddPhotoView {
         return self.view as! AddPhotoView
@@ -44,22 +48,25 @@ extension AddPhotoViewController: AddPhotoViewProtocol {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = ["public.image", "public.movie"]
         present(imagePickerController, animated: true, completion: nil)
     }
     
     func tapUploadPhotoButton() {
         
-        let photo = Photo(userID: Auth.auth().currentUser!.uid,
-                          photo: addPhotoView.photoImage.image,
-                          dateUpload: Date())
-        if photo.photo != nil {
-            AppPhotos.shared.items.append(photo)
+        photo = Photo(userID: Auth.auth().currentUser!.uid,
+                      photo: addPhotoView.photoImage.image,
+                      dateUpload: Date(),
+                      videoUrl: videoURL)
+        if photo?.photo != nil {
+            AppPhotos.shared.items.append(photo ?? Photo())
+
+            self.photo = nil
+            self.videoURL = nil
             
             addPhotoView.photoImage.image = nil
             self.tabBarController?.selectedIndex = 1
         }
-        
-        
     }
 }
 
@@ -69,9 +76,27 @@ extension AddPhotoViewController: UINavigationControllerDelegate, UIImagePickerC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        picker.dismiss(animated: true, completion: nil)
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        addPhotoView.photoImage.image = image
+        
+        guard let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL else {
+            
+            guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            addPhotoView.photoImage.image = image
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        self.videoURL = videoURL
+        do {
+            let asset = AVURLAsset(url: videoURL as URL , options: nil)
+            let imgGenerator = AVAssetImageGenerator(asset: asset)
+            imgGenerator.appliesPreferredTrackTransform = true
+            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
+            let thumbnail = UIImage(cgImage: cgImage)
+            addPhotoView.photoImage.image = thumbnail
+        } catch let error {
+            print("*** Error generating thumbnail: \(error.localizedDescription)")
+        }
+        self.dismiss(animated: true, completion: nil)
+        
     }
 }
 

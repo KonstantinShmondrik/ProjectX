@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class PhotoDitailViewController: UIViewController {
     
@@ -26,11 +28,22 @@ class PhotoDitailViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        photoDitailView.configure(user: user, photo: photo)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        photoDitailView.configure(user: user, photo: photo)
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        photoDitailView.photoImage.image = nil
     }
     
     init(user: User, photo: Photo) {

@@ -8,6 +8,8 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import AVFoundation
+import AVKit
 
 class PhotoDitailView: UIView  {
     
@@ -44,7 +46,6 @@ class PhotoDitailView: UIView  {
     
     private(set) lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Date"
         label.numberOfLines = 1
         label.textColor = .orange
         label.font = UIFont.systemFont(ofSize: 20.0)
@@ -80,7 +81,6 @@ class PhotoDitailView: UIView  {
     
     func configure(user: User, photo: Photo) {
         self.userNameLabel.text = "\(user.firstname ?? "") \(user.lastname ?? "")"
-        self.photoImage.image = photo.photo ?? UIImage(named: "noPhoto")
         
         let ref = Storage.storage().reference(forURL: user.avatarURL ?? "")
         let megaByte = Int64(1 * 1024 * 1024)
@@ -97,8 +97,24 @@ class PhotoDitailView: UIView  {
             return result
         }()
         
+        if photo.videoUrl == nil {
+            self.photoImage.image = photo.photo ?? UIImage(named: "noPhoto")
+        } else {
+            guard let url = photo.videoUrl as? URL else {return}
+            let player = AVPlayer(url: url)
+            let layer = AVPlayerLayer(player: player)
+            layer.frame = photoImage.bounds
+            layer.videoGravity = .resizeAspectFill
+            photoImage.layer.addSublayer(layer)
+            
+            player.play()
+            print(url)
+        }
+        
         let stringDate = dateFormater.string(from: photo.dateUpload ?? Date())
         self.dateLabel.text = stringDate
+        
+        
     }
     
     // MARK: - UI
@@ -109,7 +125,7 @@ class PhotoDitailView: UIView  {
         self.addSubview(self.hederView)
         self.hederView.addSubview(self.userNameLabel)
         self.hederView.addSubview(self.avatarImage)
-        self.photoImage.addSubview(self.dateLabel)
+        self.hederView.addSubview(self.dateLabel)
         
         NSLayoutConstraint.activate([
             
@@ -131,9 +147,9 @@ class PhotoDitailView: UIView  {
             self.photoImage.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor,constant: 0.0),
             self.photoImage.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,constant: 0.0),
             
-            self.dateLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.photoImage.bottomAnchor, constant: -20),
+            self.dateLabel.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor, constant: 10),
             self.dateLabel.heightAnchor.constraint(equalToConstant: 30.0),
-            self.dateLabel.rightAnchor.constraint(lessThanOrEqualTo: self.photoImage.rightAnchor, constant: -10)
+            self.dateLabel.leftAnchor.constraint(equalTo: self.userNameLabel.leftAnchor, constant: 0)
         ])
         
     }
