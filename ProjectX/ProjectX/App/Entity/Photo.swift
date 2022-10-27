@@ -8,8 +8,8 @@
 import UIKit
 
 struct Photo {
-    let userID: String?
-    let photo: UIImage?
-    let dateUpload: Date?
-    let videoUrl: NSURL?
+    var userID: String?
+    var photo: UIImage?
+    var dateUpload: Date?
+    var videoUrl: NSURL?
 }

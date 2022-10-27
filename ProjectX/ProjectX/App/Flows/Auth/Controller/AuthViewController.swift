@@ -21,18 +21,15 @@ class AuthViewController: UIViewController {
         let view = AuthView()
         view.delegate = self
         self.view = view
-
-///        for debaging
-//        view.loginTexField.text = "test3@test.ru"
-//        view.passwordTexField.text = "Zxc1zxc"
-
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        AppPhotos.shared.items = []
         
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
